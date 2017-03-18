@@ -1,8 +1,13 @@
+# Alexander Harris
+# Instagram Scrape Repost
+# Spring 2017
+
 import requests
 import re
 import os
 import time
 
+# dictionary of pages to scrape
 programmer_dictionary = {
     'codeness' : 'https://www.instagram.com/thecodeness/',
     'mononoke' : 'https://www.instagram.com/mononoke.io/',
@@ -12,15 +17,10 @@ programmer_dictionary = {
 
 }
 
-# print(page_directory['codeness'])
-
+# function to scrape page content and write it to disk
 def scrape(page):
-    page_segments = page.split('.com/')
-    # print(page_segments[1])
-    page_segments = page_segments[1].split('/')
+    page_title = get_page_title(page)
 
-    page_title = page_segments[0]
-    print(page_title)
 
     # request the page
     response = requests.get(page)
@@ -46,6 +46,10 @@ def scrape(page):
     os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
 
 
+def get_page_title(page):
+    page_segments = page.split('.com/')
+    page_segments = page_segments[1].split('/')
+    return page_segments[0]
 
 
 
