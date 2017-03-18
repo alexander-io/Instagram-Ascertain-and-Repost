@@ -30,6 +30,10 @@ def scrape(page):
     # go get the image for the post, write it to disk
     get_image(response, page_title)
 
+    # TODO : get the description for the post, write to disk
+
+    # TODO : get the hashtags associated with the post, write to disk
+
 
 # function that's used to extract page title, useful for naming files written to disk
 def get_page_title(page):
