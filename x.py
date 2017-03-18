@@ -1,5 +1,5 @@
 # Alexander Harris
-# Instagram Scrape Repost
+# Instagram Ascertain & Repost
 # Spring 2017
 
 import requests
