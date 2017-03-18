@@ -1,4 +1,4 @@
 all:
 
 clean:
-	
+	rm images/*
