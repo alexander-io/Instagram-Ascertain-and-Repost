@@ -9,6 +9,7 @@ import time
 
 # dictionary of pages to scrape
 programmer_dictionary = {
+    'natanya' : 'https://www.instagram.com/product_of_the_world',
     'codeness' : 'https://www.instagram.com/thecodeness/',
     'mononoke' : 'https://www.instagram.com/mononoke.io/',
     'world' : 'https://www.instagram.com/worldofprogrammers/',
@@ -27,7 +28,7 @@ def scrape(page):
     # get the description for the post, write to disk
     description = get_description(response, page_title)
 
-    # TODO : create uniquely identifying string that's based on the description
+    # create uniquely identifying string that's based on the description
     uid_string = make_uid_string(description)
 
     print('description', description)
@@ -66,6 +67,9 @@ def get_description(response, page_title):
 
     return description
 
+# this function is used to creat a uniquely identifying string
+# this string is to be used to identify posts, descriptions, & images for
+# writing to the filesystem
 def make_uid_string(description):
     s = description.split(' ')
     uid = ''
