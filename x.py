@@ -24,16 +24,20 @@ def scrape(page):
     # request the page
     response = requests.get(page)
 
+    # TODO : get the description for the post, write to disk
+    description = get_description(response, page_title)
+    print('description', description)
+
     # TODO : create a unique sub directory to contain the post
     # if os.path.exists('posts/')
 
     # XXX test print XXX
-    print(response.text)
+    # print(response.text)
 
     # go get the image for the post, write it to disk
     get_image(response, page_title)
 
-    # TODO : get the description for the post, write to disk
+
 
     # TODO : get the hashtags associated with the post, write to disk
 
@@ -43,6 +47,19 @@ def get_page_title(page):
     page_segments = page.split('.com/')
     page_segments = page_segments[1].split('/')
     return page_segments[0]
+
+def get_description(response, page_title):
+    description_start = re.search('caption": "', response.text)
+    i = description_start.end() # iterator used to grab description
+    description = ''
+    while True:
+        if (response.text[i] == '"'):
+            break
+        else:
+            description += response.text[i]
+        i+=1
+
+    return description
 
 # get the image link from the response, download the image, write it to disk
 def get_image(response, page_title):
