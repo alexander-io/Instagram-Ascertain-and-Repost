@@ -24,8 +24,12 @@ def scrape(page):
     # request the page
     response = requests.get(page)
 
-    # TODO : get the description for the post, write to disk
+    # get the description for the post, write to disk
     description = get_description(response, page_title)
+
+    # TODO : create uniquely identifying string that's based on the description
+    uid_string = make_uid_string(description)
+
     print('description', description)
 
     # TODO : create a unique sub directory to contain the post
@@ -48,6 +52,7 @@ def get_page_title(page):
     page_segments = page_segments[1].split('/')
     return page_segments[0]
 
+# function that's used to extract the caption, or post description
 def get_description(response, page_title):
     description_start = re.search('caption": "', response.text)
     i = description_start.end() # iterator used to grab description
@@ -60,6 +65,13 @@ def get_description(response, page_title):
         i+=1
 
     return description
+
+def make_uid_string(description):
+    s = description.split(' ')
+    uid = ''
+    for string in s:
+        uid += string[:1]
+    print('uid string :', uid)
 
 # get the image link from the response, download the image, write it to disk
 def get_image(response, page_title):
