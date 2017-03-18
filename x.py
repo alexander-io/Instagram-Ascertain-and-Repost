@@ -14,7 +14,6 @@ programmer_dictionary = {
     'world' : 'https://www.instagram.com/worldofprogrammers/',
     'republic' : 'https://www.instagram.com/programmerrepublic/',
     'quotes' : 'https://www.instagram.com/codingquotes/'
-
 }
 
 # function to scrape page content and write it to disk
@@ -26,6 +25,10 @@ def scrape(page):
     response = requests.get(page)
 
     # TODO : create a unique sub directory to contain the post
+    # if os.path.exists('posts/')
+
+    # XXX test print XXX
+    print(response.text)
 
     # go get the image for the post, write it to disk
     get_image(response, page_title)
@@ -45,7 +48,7 @@ def get_page_title(page):
 def get_image(response, page_title):
     # start by searching the response for the regular expression
     # that corresponds to the image we're looking for
-    post_link_start = re.search('thumbnail_src": "', response.text)
+    post_link_start = re.search('display_src": "', response.text)
     i = post_link_start.end() # iterator used to build image link
     post_link = '' # string builder for the image link
     # loop a bit through the reponse, meanwhile build up the image link
@@ -59,4 +62,4 @@ def get_image(response, page_title):
     # download the image, title it uniquely based on the page and time, write file to disk
     os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
 
-scrape(programmer_dictionary['mononoke'])
+scrape(programmer_dictionary['codeness'])
