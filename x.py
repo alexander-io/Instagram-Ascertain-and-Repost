@@ -43,9 +43,8 @@ def scrape(page):
     get_image(response, page_title)
 
 
-
     # TODO : get the hashtags associated with the post, write to disk
-
+    # extract the hashtags from two places, from the post description and from the post comments
 
 # function that's used to extract page title, useful for naming files written to disk
 def get_page_title(page):
