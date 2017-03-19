@@ -6,19 +6,20 @@ import requests
 import re
 import os
 import time
+import sys
 
-# dictionary of pages to scrape
+# dictionary of pages to acquire
 programmer_dictionary = {
     'natanya' : 'https://www.instagram.com/product_of_the_world',
-    'codeness' : 'https://www.instagram.com/thecodeness/',
     'mononoke' : 'https://www.instagram.com/mononoke.io/',
     'world' : 'https://www.instagram.com/worldofprogrammers/',
     'republic' : 'https://www.instagram.com/programmerrepublic/',
+    'codeness' : 'https://www.instagram.com/thecodeness/',
     'quotes' : 'https://www.instagram.com/codingquotes/'
 }
 
-# function to scrape page content and write it to disk
-def scrape(page):
+# function to acquire page content and write it to disk
+def acquire(page):
     # get page title
     page_title = get_page_title(page)
 
@@ -31,10 +32,43 @@ def scrape(page):
     # create uniquely identifying string that's based on the description
     uid_string = make_uid_string(description)
 
-    print('description', description)
+    print('description :', description)
+    print('uid string :', uid_string)
 
     # TODO : create a unique sub directory to contain the post
-    # if os.path.exists('posts/')
+    post_path = 'posts/' + page_title + '/' + uid_string
+    if os.path.exists(post_path):
+    # if os.path.exists('images/'):
+        print('path exists!')
+    else:
+        # translated_post_path = post_path.translate(None, '!@#$')
+        # translated_post_path = re.sub('@', '', post_path)
+        # translated_post_path = re.sub('\\', '', translated_post_path)
+        translated_post_path = post_path.replace("\\", "")
+        translated_post_path = translated_post_path.replace("!", "")
+        translated_post_path = translated_post_path.replace("@","")
+        translated_post_path = translated_post_path.replace("#","")
+        translated_post_path = translated_post_path.replace("$", "")
+        translated_post_path = translated_post_path.replace("%","")
+        translated_post_path = translated_post_path.replace("^","")
+        translated_post_path = translated_post_path.replace("&", "")
+        translated_post_path = translated_post_path.replace("*","")
+        translated_post_path = translated_post_path.replace("(","")
+        translated_post_path = translated_post_path.replace(")", "")
+        translated_post_path = translated_post_path.replace("_","")
+        translated_post_path = translated_post_path.replace("+","")
+
+        # translated_post_path += '.txt'
+
+        print('path does not exist')
+        os.makedirs(translated_post_path)
+        # post_file = open(translated_post_path, 'w+')
+
+        # post_file = os.open(translated_post_path, os.O_CREAT)
+
+        # post_file.write(page_title,uid_string,description)
+
+
 
     # XXX test print XXX
     # print(response.text)
@@ -45,6 +79,8 @@ def scrape(page):
 
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
+
+
 
 # function that's used to extract page title, useful for naming files written to disk
 def get_page_title(page):
@@ -74,7 +110,8 @@ def make_uid_string(description):
     uid = ''
     for string in s:
         uid += string[:1]
-    print('uid string :', uid)
+    # print('uid string :', uid)
+    return uid
 
 # get the image link from the response, download the image, write it to disk
 def get_image(response, page_title):
@@ -94,4 +131,4 @@ def get_image(response, page_title):
     # download the image, title it uniquely based on the page and time, write file to disk
     os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
 
-scrape(programmer_dictionary['codeness'])
+acquire(programmer_dictionary['codeness'])
