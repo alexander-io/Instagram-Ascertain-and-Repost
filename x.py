@@ -12,10 +12,20 @@ import sys
 post_dictionary = {
     'natanya' : 'https://www.instagram.com/product_of_the_world',
     'mononoke' : 'https://www.instagram.com/mononoke.io/',
-    'world' : 'https://www.instagram.com/worldofprogrammers/',
+    'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
+    'world_code' : 'https://www.instagram.com/worldcode/',
     'republic' : 'https://www.instagram.com/programmerrepublic/',
     'codeness' : 'https://www.instagram.com/thecodeness/',
-    'quotes' : 'https://www.instagram.com/codingquotes/'
+    'quotes' : 'https://www.instagram.com/codingquotes/',
+    'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
+    'studiokivi' : 'https://www.instagram.com/studiokivi/',
+    'coder_forevers' : 'https://www.instagram.com/coder_forevers/',
+    'famsh05' : 'https://www.instagram.com/famsh05/',
+    'insta_code1' : 'https://www.instagram.com/insta_code1/',
+    'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
+    'developer_area' : 'https://www.instagram.com/developer_area/',
+    'setupinspiration' : 'https://www.instagram.com/setupinspiration/'
+
 }
 
 
@@ -52,8 +62,7 @@ def acquire(page):
     # go get the image for the post, write it to disk also write description.json to disk
     write_post(response, page_title, translated_post_path, description, uid_string)
 
-    # TODO : get the hashtags associated with the post, write to disk
-    # extract the hashtags from two places, from the post description and from the post comments
+
 
 
 
@@ -144,6 +153,10 @@ def write_post(response, page_title, post_path, description, uid_string):
     post_file = open(post_path + "/" + f_name + ".json", "w")
     uid_string = translate_post_path(uid_string)
     post_file.write('title : ' + page_title + '\ntime : ' + post_time +'\n'+'id : ' +uid_string + '\n' + description)
+
+    # TODO : get the hashtags associated with the post, write to disk
+    # extract the hashtags from two places, from the post description and from the post comments
+
     post_file.close()
 
 # acquire all recent posts from the pages contained in post_dictionary
