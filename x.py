@@ -24,8 +24,11 @@ post_dictionary = {
     'insta_code1' : 'https://www.instagram.com/insta_code1/',
     'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
     'developer_area' : 'https://www.instagram.com/developer_area/',
-    'setupinspiration' : 'https://www.instagram.com/setupinspiration/'
-
+    'setupinspiration' : 'https://www.instagram.com/setupinspiration/',
+    'designyourworkspace' : 'https://www.instagram.com/designyourworkspace/',
+    'isetups' : 'https://www.instagram.com/isetups/',
+    'becreatives' : 'https://www.instagram.com/becreatives/',
+    'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/'
 }
 
 
