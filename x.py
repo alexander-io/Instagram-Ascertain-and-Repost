@@ -49,11 +49,8 @@ def acquire(page):
     # XXX test print XXX
     # print(response.text)
 
-    # go get the image for the post, write it to disk
+    # go get the image for the post, write it to disk also write description.json to disk
     write_post(response, page_title, translated_post_path, description, uid_string)
-
-    # TODO : write description.json to disk
-    # write_description(translate_post_path)
 
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
@@ -144,17 +141,16 @@ def write_post(response, page_title, post_path, description, uid_string):
 
 
     # write json with description to disk
-    # post_file = os.open(post_path + "/" + f_name + ".json", "w+")
     post_file = open(post_path + "/" + f_name + ".json", "w")
-    # os.O_CREAT
     uid_string = translate_post_path(uid_string)
     post_file.write('title : ' + page_title + '\ntime : ' + post_time +'\n'+'id : ' +uid_string + '\n' + description)
     post_file.close()
 
+# acquire all recent posts from the pages contained in post_dictionary
 def acquire_all(post_dictionary):
     for post in post_dictionary:
-        # acquire(post)
         acquire(post_dictionary[post])
         print(post)
-# acquire(post_dictionary['natanya'])
+
+# call to acquire all
 acquire_all(post_dictionary)
