@@ -36,28 +36,14 @@ def acquire(page):
     print('description :', description)
     print('uid string :', uid_string)
 
-    # TODO : create a unique sub directory to contain the post
+    # create a unique sub directory to contain the post
     post_path = 'posts/' + page_title + '/' + uid_string
+
+    # translate post path to remove unwanted characters
     translated_post_path = translate_post_path(post_path)
 
-
-    if os.path.exists(translated_post_path):
-    # if os.path.exists('images/'):
-        print('path exists!')
-    else:
-        # translated_post_path = post_path.translate(None, '!@#$')
-        # translated_post_path = re.sub('@', '', post_path)
-        # translated_post_path = re.sub('\\', '', translated_post_path)
-
-        # translated_post_path += '.txt'
-
-        print('path does not exist')
-        os.makedirs(translated_post_path)
-        # post_file = open(translated_post_path, 'w+')
-
-        # post_file = os.open(translated_post_path, os.O_CREAT)
-
-        # post_file.write(page_title,uid_string,description)
+    # create a unique sub directory to contain the post
+    make_post_path(post_path, page_title, uid_string, translated_post_path)
 
 
 
@@ -103,6 +89,16 @@ def make_uid_string(description):
         uid += string[:1]
     # print('uid string :', uid)
     return uid
+
+def make_post_path(post_path, page_title, uid_string, translated_post_path):
+
+    # check if the post path exists, if not make it...
+    if os.path.exists(translated_post_path):
+        print('path exists!')
+    else:
+        print('path does not exist')
+        os.makedirs(translated_post_path)
+
 # remove all unwanted characters from the path
 def translate_post_path(post_path):
     translated_post_path = post_path.replace("\\", "")
@@ -119,6 +115,8 @@ def translate_post_path(post_path):
     translated_post_path = translated_post_path.replace("_","")
     translated_post_path = translated_post_path.replace("+","")
     return translated_post_path
+
+
 
 # get the image link from the response, download the image, write it to disk
 def get_image(response, page_title, post_path):
