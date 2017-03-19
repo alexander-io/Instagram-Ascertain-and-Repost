@@ -28,7 +28,8 @@ post_dictionary = {
     'designyourworkspace' : 'https://www.instagram.com/designyourworkspace/',
     'isetups' : 'https://www.instagram.com/isetups/',
     'becreatives' : 'https://www.instagram.com/becreatives/',
-    'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/'
+    'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
+    'codinblog' : 'https://www.instagram.com/codinblog/'
 }
 
 
@@ -66,9 +67,6 @@ def acquire(page):
     write_post(response, page_title, translated_post_path, description, uid_string)
 
 
-
-
-
 # function that's used to extract page title, useful for naming files written to disk
 def get_page_title(page):
     page_segments = page.split('.com/')
@@ -100,11 +98,10 @@ def make_uid_string(description):
             uid += string[:1]
         else:
             uid += string[:2]
-    
+
     return uid
 
 def make_post_path(post_path, page_title, uid_string, translated_post_path):
-
     # check if the post path exists, if not make it...
     if os.path.exists(translated_post_path):
         print('path exists!')
@@ -130,8 +127,6 @@ def translate_post_path(post_path):
     translated_post_path = translated_post_path.replace("=","")
     return translated_post_path
 
-
-
 # get the image link from the response, download the image, write it to disk
 def write_post(response, page_title, post_path, description, uid_string):
     # start by searching the response for the regular expression
@@ -151,14 +146,12 @@ def write_post(response, page_title, post_path, description, uid_string):
 
     f_name = page_title+'_'+post_time
     # download the image, title it uniquely based on the page and time, write file to disk
-    # os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
     os.system('curl ' + post_link + ' -o ' + post_path + '/' + f_name + '.jpg')
-
 
     # write json with description to disk
     post_file = open(post_path + "/" + f_name + ".json", "w")
     uid_string = translate_post_path(uid_string)
-    post_file.write('title : ' + page_title + '\ntime : ' + post_time +'\n'+'id : ' +uid_string + '\n' + description)
+    post_file.write('{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}')
 
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
