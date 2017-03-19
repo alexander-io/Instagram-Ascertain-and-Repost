@@ -96,8 +96,11 @@ def make_uid_string(description):
     s = description.split(' ')
     uid = ''
     for string in s:
-        uid += string[:1]
-    # print('uid string :', uid)
+        if (string[:1] != '#'):
+            uid += string[:1]
+        else:
+            uid += string[:2]
+    
     return uid
 
 def make_post_path(post_path, page_title, uid_string, translated_post_path):
