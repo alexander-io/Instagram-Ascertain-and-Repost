@@ -18,6 +18,7 @@ programmer_dictionary = {
     'quotes' : 'https://www.instagram.com/codingquotes/'
 }
 
+
 # function to acquire page content and write it to disk
 def acquire(page):
     # get page title
@@ -37,26 +38,16 @@ def acquire(page):
 
     # TODO : create a unique sub directory to contain the post
     post_path = 'posts/' + page_title + '/' + uid_string
-    if os.path.exists(post_path):
+    translated_post_path = translate_post_path(post_path)
+
+
+    if os.path.exists(translated_post_path):
     # if os.path.exists('images/'):
         print('path exists!')
     else:
         # translated_post_path = post_path.translate(None, '!@#$')
         # translated_post_path = re.sub('@', '', post_path)
         # translated_post_path = re.sub('\\', '', translated_post_path)
-        translated_post_path = post_path.replace("\\", "")
-        translated_post_path = translated_post_path.replace("!", "")
-        translated_post_path = translated_post_path.replace("@","")
-        translated_post_path = translated_post_path.replace("#","")
-        translated_post_path = translated_post_path.replace("$", "")
-        translated_post_path = translated_post_path.replace("%","")
-        translated_post_path = translated_post_path.replace("^","")
-        translated_post_path = translated_post_path.replace("&", "")
-        translated_post_path = translated_post_path.replace("*","")
-        translated_post_path = translated_post_path.replace("(","")
-        translated_post_path = translated_post_path.replace(")", "")
-        translated_post_path = translated_post_path.replace("_","")
-        translated_post_path = translated_post_path.replace("+","")
 
         # translated_post_path += '.txt'
 
@@ -74,7 +65,7 @@ def acquire(page):
     # print(response.text)
 
     # go get the image for the post, write it to disk
-    get_image(response, page_title)
+    get_image(response, page_title, translated_post_path)
 
 
     # TODO : get the hashtags associated with the post, write to disk
@@ -112,9 +103,25 @@ def make_uid_string(description):
         uid += string[:1]
     # print('uid string :', uid)
     return uid
+# remove all unwanted characters from the path
+def translate_post_path(post_path):
+    translated_post_path = post_path.replace("\\", "")
+    translated_post_path = translated_post_path.replace("!", "")
+    translated_post_path = translated_post_path.replace("@","")
+    translated_post_path = translated_post_path.replace("#","")
+    translated_post_path = translated_post_path.replace("$", "")
+    translated_post_path = translated_post_path.replace("%","")
+    translated_post_path = translated_post_path.replace("^","")
+    translated_post_path = translated_post_path.replace("&", "")
+    translated_post_path = translated_post_path.replace("*","")
+    translated_post_path = translated_post_path.replace("(","")
+    translated_post_path = translated_post_path.replace(")", "")
+    translated_post_path = translated_post_path.replace("_","")
+    translated_post_path = translated_post_path.replace("+","")
+    return translated_post_path
 
 # get the image link from the response, download the image, write it to disk
-def get_image(response, page_title):
+def get_image(response, page_title, post_path):
     # start by searching the response for the regular expression
     # that corresponds to the image we're looking for
     post_link_start = re.search('display_src": "', response.text)
@@ -129,6 +136,8 @@ def get_image(response, page_title):
         i+=1
 
     # download the image, title it uniquely based on the page and time, write file to disk
-    os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
+    # os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
+    os.system('curl ' + post_link + ' -o ' + post_path + '/' + page_title + '_' + str(time.time()) + '.jpg')
+
 
 acquire(programmer_dictionary['codeness'])
