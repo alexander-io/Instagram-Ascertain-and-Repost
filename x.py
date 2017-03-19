@@ -9,7 +9,7 @@ import time
 import sys
 
 # dictionary of pages to acquire
-programmer_dictionary = {
+post_dictionary = {
     'natanya' : 'https://www.instagram.com/product_of_the_world',
     'mononoke' : 'https://www.instagram.com/mononoke.io/',
     'world' : 'https://www.instagram.com/worldofprogrammers/',
@@ -46,13 +46,14 @@ def acquire(page):
     make_post_path(post_path, page_title, uid_string, translated_post_path)
 
 
-
     # XXX test print XXX
     # print(response.text)
 
     # go get the image for the post, write it to disk
-    get_image(response, page_title, translated_post_path)
+    write_post(response, page_title, translated_post_path, description, uid_string)
 
+    # TODO : write description.json to disk
+    # write_description(translate_post_path)
 
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
@@ -114,12 +115,13 @@ def translate_post_path(post_path):
     translated_post_path = translated_post_path.replace(")", "")
     translated_post_path = translated_post_path.replace("_","")
     translated_post_path = translated_post_path.replace("+","")
+    translated_post_path = translated_post_path.replace("=","")
     return translated_post_path
 
 
 
 # get the image link from the response, download the image, write it to disk
-def get_image(response, page_title, post_path):
+def write_post(response, page_title, post_path, description, uid_string):
     # start by searching the response for the regular expression
     # that corresponds to the image we're looking for
     post_link_start = re.search('display_src": "', response.text)
@@ -133,9 +135,26 @@ def get_image(response, page_title, post_path):
             post_link += response.text[i]
         i+=1
 
+    post_time = str(time.time())
+
+    f_name = page_title+'_'+post_time
     # download the image, title it uniquely based on the page and time, write file to disk
     # os.system('curl ' + post_link + ' -o images/' + page_title + '_' + str(time.time()) + '.jpg')
-    os.system('curl ' + post_link + ' -o ' + post_path + '/' + page_title + '_' + str(time.time()) + '.jpg')
+    os.system('curl ' + post_link + ' -o ' + post_path + '/' + f_name + '.jpg')
 
 
-acquire(programmer_dictionary['codeness'])
+    # write json with description to disk
+    # post_file = os.open(post_path + "/" + f_name + ".json", "w+")
+    post_file = open(post_path + "/" + f_name + ".json", "w")
+    # os.O_CREAT
+    uid_string = translate_post_path(uid_string)
+    post_file.write('title : ' + page_title + '\ntime : ' + post_time +'\n'+'id : ' +uid_string + '\n' + description)
+    post_file.close()
+
+def acquire_all(post_dictionary):
+    for post in post_dictionary:
+        # acquire(post)
+        acquire(post_dictionary[post])
+        print(post)
+# acquire(post_dictionary['natanya'])
+acquire_all(post_dictionary)
