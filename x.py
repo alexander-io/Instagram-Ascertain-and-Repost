@@ -57,14 +57,20 @@ def acquire(page):
     translated_post_path = translate_post_path(post_path)
 
     # create a unique sub directory to contain the post
-    make_post_path(post_path, page_title, uid_string, translated_post_path)
+    path_created = make_post_path(post_path, page_title, uid_string, translated_post_path)
 
 
     # XXX test print XXX
     # print(response.text)
 
-    # go get the image for the post, write it to disk also write description.json to disk
-    write_post(response, page_title, translated_post_path, description, uid_string)
+    if (path_created) :
+        # go get the image for the post, write it to disk also write description.json to disk
+        write_post(response, page_title, translated_post_path, description, uid_string)
+    else :
+        # path already created, no need to make again
+        pass
+
+
 
 
 # function that's used to extract page title, useful for naming files written to disk
@@ -106,11 +112,11 @@ def make_post_path(post_path, page_title, uid_string, translated_post_path):
     # check if the post path exists, if not make it...
     if os.path.exists(translated_post_path):
         print('path exists!')
-        return false
+        return False
     else:
         print('path does not exist')
         os.makedirs(translated_post_path)
-        return true
+        return True
 
 # remove all unwanted characters from the path
 def translate_post_path(post_path):
@@ -169,3 +175,7 @@ def acquire_all(post_dictionary):
 
 # call to acquire all
 acquire_all(post_dictionary)
+
+# TODO :
+# bridge to repost function
+# repost()
