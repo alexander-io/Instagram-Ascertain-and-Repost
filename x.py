@@ -2,11 +2,11 @@
 # Instagram Ascertain & Repost
 # Spring 2017
 
-import requests
-import re
-import os
-import time
-import sys
+import requests, re, os, time, sys
+# import re
+# import os
+# import time
+# import sys
 
 # dictionary of pages to acquire
 post_dictionary = {
@@ -101,13 +101,16 @@ def make_uid_string(description):
 
     return uid
 
+# returns true if the path creaton was successful, else false
 def make_post_path(post_path, page_title, uid_string, translated_post_path):
     # check if the post path exists, if not make it...
     if os.path.exists(translated_post_path):
         print('path exists!')
+        return false
     else:
         print('path does not exist')
         os.makedirs(translated_post_path)
+        return true
 
 # remove all unwanted characters from the path
 def translate_post_path(post_path):
