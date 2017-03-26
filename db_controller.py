@@ -8,7 +8,7 @@ import pprint
 
 def post_to_base(post):
     client = pymongo.MongoClient()
-    db = client.test_database
+    db = client.post_database
     posts = db.posts
 
     # post = {'key':'val'}
