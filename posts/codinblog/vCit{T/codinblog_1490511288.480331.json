@@ -1,6 +1,0 @@
-{
-	"title" : "codinblog",
-	"time" : "1490511288.480331",
-	"id" : "vCit{T",
-	"description" : "@deniizvurall\n\u30fb\u30fb\u30fb\npublic void Coding ()\n{  if(coffee.gameObject.activeInHierarchy == true) {  Time.timeScale = 1;  isCodingActive = true;  MoodController.SubmitNewMood (coderMood); textDisplay.text = MoodController.GetCurrentMood ().ToString (); }\n} //Output =\u003e Coded Happily Ever After \u2615\ud83d\udcbb\u2764\n\ud83d\udd3d\n\ud83d\udd3d\n\ud83d\udd3d\n#game #development #engineering #softwaredeveloper #software #unity #macbook #developer #geek #coding #computerscience #indiedev #girlswhocode #gamergirl #starwars #devlife #mac #computer #unity3d #madewithunity #instagram"
-}

@@ -32,7 +32,7 @@ post_dictionary = {
     'thavy' : 'https://www.instagram.com/thavytillest/',
     'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
     'codingcouple' : 'https://www.instagram.com/codingcouple/',
-    'madeawkward' : 'https://www.instagram.com/madeawkward/',
+    'madeawkward' : 'https://www.instagram.com/madeawkward/'
 }
 
 
@@ -177,7 +177,13 @@ def write_post(response, page_title, post_path, description, uid_string):
 
     # open the post_map
     post_map = open("post_map", "a")
-    post_map.write(post_text + ",")
+    # if post_map file is empty :
+    if os.path.getsize('post_map') == 0:
+        # then don't write the post-text with a leading comma
+        post_map.write(post_text)
+    else:
+        # else write the post text with a leading comma
+        post_map.write("," + post_text)
     post_map.close()
 
 

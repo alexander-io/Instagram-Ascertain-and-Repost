@@ -1,3 +1,6 @@
+import os
+import json
+
 class Queue():
     def __init__(self, head):
         self.head = head
@@ -49,14 +52,38 @@ class Entry():
     def get_prev(self):
         return self.prev
 
-e = Entry('a','b','c','d')
-q = Queue(e)
+# e = Entry('a','b','c','d')
+# q = Queue(e)
+#
+# q.enqueue(e)
+# e = Entry('a','c','c','d')
+# q.enqueue(e)
+#
+# q.print_q()
+# q.dequeue()
+#
+# q.print_q()
 
-q.enqueue(e)
-e = Entry('a','c','c','d')
-q.enqueue(e)
+# print(os.path.getsize('post_map'))
+data = {}
+data['key'] = 'value'
+json_data = json.dumps(data)
+data['key2'] = 'value2'
+json_data = json.dumps(data)
+data['key'] = 'value'
+json_data = json.dumps(data)
+# print(json_data)
 
-q.print_q()
-q.dequeue()
+data2 = {}
+data2['key'] = 'value'
+json_data2 = json.dumps(data2)
+with open("post_map", "w") as f:
+    json.dump(json_data, f)
+    # json.dump(json_data2, f)
 
-q.print_q()
+with open("post_map", "a") as f:
+    json.dump(json_data2, f)
+
+# with open("post_map", "r") as f:
+#     file_data = json.loads(f)
+    # print(file_data)
