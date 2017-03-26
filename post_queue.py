@@ -65,25 +65,25 @@ class Entry():
 # q.print_q()
 
 # print(os.path.getsize('post_map'))
-data = {}
-data['key'] = 'value'
-json_data = json.dumps(data)
-data['key2'] = 'value2'
-json_data = json.dumps(data)
-data['key'] = 'value'
-json_data = json.dumps(data)
-# print(json_data)
-
-data2 = {}
-data2['key'] = 'value'
-json_data2 = json.dumps(data2)
-with open("post_map", "w") as f:
-    json.dump(json_data, f)
-    # json.dump(json_data2, f)
-
-with open("post_map", "a") as f:
-    json.dump(json_data2, f)
-
+# data = {}
+# data['key'] = 'value'
+# json_data = json.dumps(data)
+# data['key2'] = 'value2'
+# json_data = json.dumps(data)
+# data['key'] = 'value'
+# json_data = json.dumps(data)
+# # print(json_data)
+#
+# data2 = {}
+# data2['key'] = 'value'
+# json_data2 = json.dumps(data2)
+# with open("post_map", "w") as f:
+#     json.dump(json_data, f)
+#     # json.dump(json_data2, f)
+#
+# with open("post_map", "a") as f:
+#     json.dump(json_data2, f)
+#
 # with open("post_map", "r") as f:
 #     file_data = json.loads(f)
-    # print(file_data)
+#     # print(file_data)

@@ -3,6 +3,8 @@
 # Spring 2017
 
 import requests, re, os, time, sys
+import post_queue
+import db_controller
 # import re
 # import os
 # import time
@@ -69,6 +71,7 @@ def acquire(page):
     if (path_created) :
         # go get the image for the post, write it to disk also write description.json to disk
         write_post(response, page_title, translated_post_path, description, uid_string)
+
     else :
         # path already created, no need to make again
         pass
@@ -161,8 +164,9 @@ def write_post(response, page_title, post_path, description, uid_string):
     post_time = str(time.time())
 
     f_name = page_title+'_'+post_time
+    image_path  = post_path + '/' + f_name + '.jpg'
     # download the image, title it uniquely based on the page and time, write file to disk
-    os.system('curl ' + post_link + ' -o ' + post_path + '/' + f_name + '.jpg')
+    os.system('curl ' + post_link + ' -o ' + image_path)
 
     # write json with description to disk
     post_file = open(post_path + "/" + f_name + ".json", "w")
@@ -170,6 +174,15 @@ def write_post(response, page_title, post_path, description, uid_string):
     post_text = '{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}'
     post_file.write(post_text)
 
+
+    db_entry = {
+        "username" : page_title,
+        "image_path" : image_path,
+        "description" : description,
+        "scrape_time" : post_time
+    }
+
+    db_controller.post_to_base(db_entry)
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
 
