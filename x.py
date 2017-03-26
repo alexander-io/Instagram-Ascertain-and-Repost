@@ -21,7 +21,6 @@ post_dictionary = {
     'studiokivi' : 'https://www.instagram.com/studiokivi/',
     'coder_forevers' : 'https://www.instagram.com/coder_forevers/',
     'famsh05' : 'https://www.instagram.com/famsh05/',
-    'insta_code1' : 'https://www.instagram.com/insta_code1/',
     'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
     'developer_area' : 'https://www.instagram.com/developer_area/',
     'setupinspiration' : 'https://www.instagram.com/setupinspiration/',
@@ -29,7 +28,11 @@ post_dictionary = {
     'isetups' : 'https://www.instagram.com/isetups/',
     'becreatives' : 'https://www.instagram.com/becreatives/',
     'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
-    'codinblog' : 'https://www.instagram.com/codinblog/'
+    'codinblog' : 'https://www.instagram.com/codinblog/',
+    'thavy' : 'https://www.instagram.com/thavytillest/',
+    'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
+    'codingcouple' : 'https://www.instagram.com/codingcouple/',
+    'madeawkward' : 'https://www.instagram.com/madeawkward/',
 }
 
 
@@ -71,8 +74,6 @@ def acquire(page):
         pass
 
 
-
-
 # function that's used to extract page title, useful for naming files written to disk
 def get_page_title(page):
     page_segments = page.split('.com/')
@@ -105,16 +106,22 @@ def make_uid_string(description):
         else:
             uid += string[:2]
 
-    return uid
+    if len(uid)>=10:
+        return uid[:10]
+    else:
+        return uid
 
 # returns true if the path creaton was successful, else false
 def make_post_path(post_path, page_title, uid_string, translated_post_path):
+    # use only the first 50 characters, so to avoid system filename error
+    # translated_post_path = translated_post_path[:25]
     # check if the post path exists, if not make it...
     if os.path.exists(translated_post_path):
         print('path exists!')
         return False
     else:
         print('path does not exist')
+
         os.makedirs(translated_post_path)
         return True
 
@@ -160,12 +167,19 @@ def write_post(response, page_title, post_path, description, uid_string):
     # write json with description to disk
     post_file = open(post_path + "/" + f_name + ".json", "w")
     uid_string = translate_post_path(uid_string)
-    post_file.write('{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}')
+    post_text = '{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}'
+    post_file.write(post_text)
 
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
 
     post_file.close()
+
+    # open the post_map
+    post_map = open("post_map", "a")
+    post_map.write(post_text + ",")
+    post_map.close()
+
 
 # acquire all recent posts from the pages contained in post_dictionary
 def acquire_all(post_dictionary):
