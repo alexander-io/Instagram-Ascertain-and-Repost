@@ -7,6 +7,8 @@ import queue
 import time
 import os
 import sys
+from bson.objectid import ObjectId
+import pprint
 # import imp
 
 sys.path.append('Instagram-API-python')
@@ -19,8 +21,7 @@ from InstagramAPI import InstagramAPI
 # sys.path.append(os.path.expanduser(configfile))
 # from InstagramAPI import InstagramAPI
 # import InstagramAPI
-# IGUSER = 'mononoke.io'
-# PASSWD = 'deathrace2'
+
 
 
 
@@ -28,35 +29,56 @@ from InstagramAPI import InstagramAPI
 
 
 def main():
-    print('input username')
-    IGUSER = input()
-    print('input password')
-    PASSWD = input()
-    igapi = InstagramAPI(IGUSER,PASSWD)
-    igapi.login() # login
-    igapi.uploadPhoto("coder_forevers_1490599663.367273.jpg", "ayy")
-    igapi.logout()
-
+    # declare & fill the queue with ObjectId types, corresponding to the values contained in the post_map
     q = queue.Queue()
     q = fill_queue(q)
-    i = 0
 
-    while(True):
+    # start the mongo client, access the posts database
+    client = pymongo.MongoClient()
+    db = client.post_database
+    posts = db.posts
+
+    # login to session throigh instagram api
+    print('input username')
+    IGUSER = input()
+
+    print('input password')
+    PASSWD = input()
+
+    igapi = InstagramAPI(IGUSER,PASSWD)
+    igapi.login() # login
+    i=0
+    while not q.empty():
+        # pprint.pprint(posts.find_one({"_id":q.get()}))
+        p = posts.find_one({"_id":q.get()})
+
         print('posting next, #'+str(i))
-        # InstagramAPI = InstagramAPI.InstagramAPI("#", "#")
-        # igapi = InstagramAPI(IGUSER,PASSWD)
-        # igapi.login() # login
-        # igapi.uploadPhoto("coder_forevers_1490599663.367273.jpg", "ayy")
-        # igapi.logout()
+        print(p['image_path'])
+        igapi.uploadPhoto(p['image_path'], "source : @"+p['username']+" - '"+p['description']+"'")
 
-        # post_next(q)
+        # media_id = igapi.uploadPhoto(p['image_path'], p['username']+" - "+p['description'])
+        # with open("live_posts", "a") as f:
+        #     f.write(media_id+"\n")
+
+
+        # sleep until next post
         time.sleep(5)
         i+=1
-
-# def post_next(q):
-#     q.get()
+    # log out of session
+    igapi.logout()
 
 def fill_queue(q):
-    print('fill queue')
+    with open("post_map", "r") as f:
+        map_content = f.readlines()
+
+    # print(map_content)
+    for x in map_content:
+        # print('x : ', x)
+        x = x.replace("\n", "")
+        q.put(ObjectId(x))
+
+
+    # pprint.pprint(posts.find_one({"_id":pidd}))
+
     return q
 main()

@@ -11,7 +11,7 @@ from bson.objectid import ObjectId
 
 # dictionary of pages to acquire
 post_dictionary = {
-    'natanya' : 'https://www.instagram.com/product_of_the_world',
+    # 'natanya' : 'https://www.instagram.com/product_of_the_world',
     'mononoke' : 'https://www.instagram.com/mononoke.io/',
     'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
     'world_code' : 'https://www.instagram.com/worldcode/',
@@ -30,7 +30,7 @@ post_dictionary = {
     'becreatives' : 'https://www.instagram.com/becreatives/',
     'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
     'codinblog' : 'https://www.instagram.com/codinblog/',
-    'thavy' : 'https://www.instagram.com/thavytillest/',
+    # 'thavy' : 'https://www.instagram.com/thavytillest/',
     'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
     'codingcouple' : 'https://www.instagram.com/codingcouple/',
     'madeawkward' : 'https://www.instagram.com/madeawkward/'
