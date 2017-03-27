@@ -1,8 +1,15 @@
 all:
-	python3 x.py
+	mkdir posts/
+	touch post_map
+
 clean:
 
 	rm -rf posts/*
-	rm post_map
-	touch post_map
+	rm -rf posts
+	rm -rf post_map
 	python3 drop_db.py
+
+run:
+	mkdir posts/
+	touch post_map
+	python3 x.py
