@@ -190,8 +190,13 @@ def write_post(response, page_title, post_path, description, uid_string):
 
     # open the post_map
     post_map = open("post_map", "a")
+
+    print('post map :', post_map)
+
+
     # if post_map file is empty :
     post_map.write(str(post_id)+"\n")
+
     # if os.path.getsize('post_map') == 0:
     #     # then don't write the post-text with a leading comma
     #     post_map.write(post_text)
@@ -210,7 +215,7 @@ def acquire_all(post_dictionary):
         print(post)
 
 # call to acquire all
-# acquire_all(post_dictionary)
+acquire_all(post_dictionary)
 
 # TODO :
 # bridge to repost function

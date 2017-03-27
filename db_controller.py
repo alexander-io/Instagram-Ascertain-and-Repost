@@ -12,6 +12,6 @@ def post_to_base(post):
     posts = db.posts
 
     # post = {'key':'val'}
-
+    
     post_id = posts.insert_one(post).inserted_id
     return post_id
