@@ -4,7 +4,7 @@
 
 
 import requests, re, os, time, sys
-import post_queue
+
 import db_controller
 from bson.objectid import ObjectId
 
