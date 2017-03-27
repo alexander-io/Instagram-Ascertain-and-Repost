@@ -210,7 +210,7 @@ def acquire_all(post_dictionary):
         print(post)
 
 # call to acquire all
-acquire_all(post_dictionary)
+# acquire_all(post_dictionary)
 
 # TODO :
 # bridge to repost function

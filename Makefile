@@ -3,7 +3,6 @@ all:
 	touch post_map
 
 clean:
-
 	rm -rf posts/*
 	rm -rf posts
 	rm -rf post_map

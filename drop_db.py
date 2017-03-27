@@ -1,3 +1,6 @@
+# this is a quick script to drop the collection's entries
+# from the database, this script is executed on issuance of $ make clean
+
 import pymongo
 client = pymongo.MongoClient()
 
