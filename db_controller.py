@@ -14,3 +14,4 @@ def post_to_base(post):
     # post = {'key':'val'}
 
     post_id = posts.insert_one(post).inserted_id
+    return post_id

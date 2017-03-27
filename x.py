@@ -2,13 +2,12 @@
 # Instagram Ascertain & Repost
 # Spring 2017
 
+
 import requests, re, os, time, sys
 import post_queue
 import db_controller
-# import re
-# import os
-# import time
-# import sys
+from bson.objectid import ObjectId
+
 
 # dictionary of pages to acquire
 post_dictionary = {
@@ -182,21 +181,25 @@ def write_post(response, page_title, post_path, description, uid_string):
         "scrape_time" : post_time
     }
 
-    db_controller.post_to_base(db_entry)
+    post_id = db_controller.post_to_base(db_entry)
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
+    # print('POST ID : ', post_id)
 
     post_file.close()
 
     # open the post_map
     post_map = open("post_map", "a")
     # if post_map file is empty :
-    if os.path.getsize('post_map') == 0:
-        # then don't write the post-text with a leading comma
-        post_map.write(post_text)
-    else:
-        # else write the post text with a leading comma
-        post_map.write("," + post_text)
+    post_map.write(str(post_id)+"\n")
+    # if os.path.getsize('post_map') == 0:
+    #     # then don't write the post-text with a leading comma
+    #     post_map.write(post_text)
+    #     # pidd = ObjectId(post_id)
+    #     # post_map.write(str(post_id))
+    # else:
+    #     # else write the post text with a leading comma
+    #     post_map.write("," + post_text)
     post_map.close()
 
 
