@@ -16,7 +16,7 @@ post_dictionary = {
     'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
     'world_code' : 'https://www.instagram.com/worldcode/',
     'republic' : 'https://www.instagram.com/programmerrepublic/',
-    'codeness' : 'https://www.instagram.com/thecodeness/',
+    # 'codeness' : 'https://www.instagram.com/thecodeness/',
     'quotes' : 'https://www.instagram.com/codingquotes/',
     'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
     'studiokivi' : 'https://www.instagram.com/studiokivi/',
@@ -33,7 +33,9 @@ post_dictionary = {
     # 'thavy' : 'https://www.instagram.com/thavytillest/',
     'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
     'codingcouple' : 'https://www.instagram.com/codingcouple/',
-    'madeawkward' : 'https://www.instagram.com/madeawkward/'
+    'madeawkward' : 'https://www.instagram.com/madeawkward/',
+    'pixelsdigital' : 'https://www.instagram.com/pixelsdigital/',
+    'setuptour_' : 'https://www.instagram.com/setuptour_/'
 }
 
 
