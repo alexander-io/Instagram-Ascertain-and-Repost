@@ -6,7 +6,7 @@ This is a script that ascertains Instagram content, makes a record of the conten
 MongoDB is a dependency for the back-end of this project.
 [MongoDB](https://github.com/mongodb/mongo)
 
-Usage :
+# Usage :
 ## drop database records, remove post records
 ### $ make clean
 
