@@ -6,58 +6,6 @@ import requests, re, os, time, sys
 import db_controller
 from bson.objectid import ObjectId
 
-# dictionary of pages to acquire
-# post_dictionary = {
-#     # 'natanya' : 'https://www.instagram.com/product_of_the_world',
-#     'mononoke' : 'https://www.instagram.com/mononoke.io/',
-#     'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
-#     'world_code' : 'https://www.instagram.com/worldcode/',
-#     'republic' : 'https://www.instagram.com/programmerrepublic/',
-#     # 'codeness' : 'https://www.instagram.com/thecodeness/',
-#     'quotes' : 'https://www.instagram.com/codingquotes/',
-#     'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
-#     'studiokivi' : 'https://www.instagram.com/studiokivi/',
-#     'coder_forevers' : 'https://www.instagram.com/coder_forevers/',
-#     'famsh05' : 'https://www.instagram.com/famsh05/',
-#     'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
-#     'developer_area' : 'https://www.instagram.com/developer_area/',
-#     'setupinspiration' : 'https://www.instagram.com/setupinspiration/',
-#     'designyourworkspace' : 'https://www.instagram.com/designyourworkspace/',
-#     'isetups' : 'https://www.instagram.com/isetups/',
-#     'becreatives' : 'https://www.instagram.com/becreatives/',
-#     'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
-#     'codinblog' : 'https://www.instagram.com/codinblog/',
-#     # 'thavy' : 'https://www.instagram.com/thavytillest/',
-#     'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
-#     'codingcouple' : 'https://www.instagram.com/codingcouple/',
-#     'madeawkward' : 'https://www.instagram.com/madeawkward/',
-#     'pixelsdigital' : 'https://www.instagram.com/pixelsdigital/',
-#     'setuptour_' : 'https://www.instagram.com/setuptour_/'
-# }
-
-# # ceramics dict
-# post_dictionary = {
-#     'ceramicsaretrending' : 'https://www.instagram.com/ceramicsaretrending/',
-#     'floriangadsby' : 'https://www.instagram.com/floriangadsby/',
-#     'khwurtz' : 'https://www.instagram.com/khwurtz/',
-#     't_endoh' : 'https://www.instagram.com/t_endoh/',
-#     'studio_ramonabarfuss' : 'https://www.instagram.com/studio_ramonabarfuss/',
-#     'kira_ni' : 'https://www.instagram.com/kira_ni/',
-#     'jonosmart' : 'https://www.instagram.com/jonosmart/',
-#     'madebywan' : 'https://www.instagram.com/madebywan/',
-#     'henrystreetstudio' : 'https://www.instagram.com/henrystreetstudio/',
-#     'ghostwares' : 'https://www.instagram.com/ghostwares/',
-#     'kazunori_ohnaka' : 'https://www.instagram.com/kazunori_ohnaka/',
-#     'luke_eastop_ceramics' : 'https://www.instagram.com/luke.eastop.ceramics/',
-#     'miromadethis' : 'https://www.instagram.com/miromadethis/',
-#     'lunaceramics' : 'https://www.instagram.com/lunaceramics/',
-#     'love_ceramic' : 'https://www.instagram.com/love_ceramic/',
-#     'lindseywherrett' : 'https://www.instagram.com/lindseywherrett/',
-#     'lindseywherrett' : 'https://www.instagram.com/lindseywherrett/'
-#
-# }
-
-
 # function to acquire page content and write it to disk
 def acquire(page):
     # get page title
@@ -208,6 +156,7 @@ def write_post(response, page_title, post_path, description, uid_string):
     }
 
     post_id = db_controller.post_to_base(db_entry)
+
     # TODO : get the hashtags associated with the post, write to disk
     # extract the hashtags from two places, from the post description and from the post comments
     # print('POST ID : ', post_id)
@@ -223,14 +172,7 @@ def write_post(response, page_title, post_path, description, uid_string):
     # if post_map file is empty :
     post_map.write(str(post_id)+"\n")
 
-    # if os.path.getsize('post_map') == 0:
-    #     # then don't write the post-text with a leading comma
-    #     post_map.write(post_text)
-    #     # pidd = ObjectId(post_id)
-    #     # post_map.write(str(post_id))
-    # else:
-    #     # else write the post text with a leading comma
-    #     post_map.write("," + post_text)
+    # close file
     post_map.close()
 
 
@@ -239,10 +181,3 @@ def acquire_all(post_dictionary):
     for post in post_dictionary:
         acquire(post_dictionary[post])
         print(post)
-
-# call to acquire all
-# acquire_all(post_dictionary)
-
-# TODO :
-# bridge to repost function
-# repost()
