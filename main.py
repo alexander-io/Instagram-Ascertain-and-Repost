@@ -19,8 +19,10 @@ def main():
     print('input username')
     IGUSER = input()
 
+
     print('input password')
     PASSWD = input()
+    
 
     # call to api
     igapi = InstagramAPI(IGUSER,PASSWD)
@@ -48,9 +50,9 @@ def main():
 
     # igapi.login() # login
     i=0
-
+    igapi.login() # login
     while not q.empty():
-        igapi.login() # login
+
         # pprint.pprint(posts.find_one({"_id":q.get()}))
         entry = q.get()
         p = posts.find_one({"_id":entry})
@@ -78,11 +80,11 @@ def main():
 
 
         # sleep until next post
-        # log out of session
-        igapi.logout()
-        time.sleep(20)
-        i+=1
 
+        time.sleep(40)
+        i+=1
+    # log out of session
+    igapi.logout()
 
 def fill_queue(q):
     with open("post_map", "r") as f:

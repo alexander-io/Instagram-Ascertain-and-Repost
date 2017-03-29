@@ -38,6 +38,28 @@ post_dictionary = {
     'setuptour_' : 'https://www.instagram.com/setuptour_/'
 }
 
+# ceramics dict
+# post_dictionary = {
+#     'ceramicsaretrending' : 'https://www.instagram.com/ceramicsaretrending/',
+#     'floriangadsby' : 'https://www.instagram.com/floriangadsby/',
+#     'khwurtz' : 'https://www.instagram.com/khwurtz/',
+#     't_endoh' : 'https://www.instagram.com/t_endoh/',
+#     'studio_ramonabarfuss' : 'https://www.instagram.com/studio_ramonabarfuss/',
+#     'kira_ni' : 'https://www.instagram.com/kira_ni/',
+#     'jonosmart' : 'https://www.instagram.com/jonosmart/',
+#     'madebywan' : 'https://www.instagram.com/madebywan/',
+#     'henrystreetstudio' : 'https://www.instagram.com/henrystreetstudio/',
+#     'ghostwares' : 'https://www.instagram.com/ghostwares/',
+#     'kazunori_ohnaka' : 'https://www.instagram.com/kazunori_ohnaka/',
+#     'luke_eastop_ceramics' : 'https://www.instagram.com/luke.eastop.ceramics/',
+#     'miromadethis' : 'https://www.instagram.com/miromadethis/',
+#     'lunaceramics' : 'https://www.instagram.com/lunaceramics/',
+#     'love_ceramic' : 'https://www.instagram.com/love_ceramic/',
+#     'lindseywherrett' : 'https://www.instagram.com/lindseywherrett/',
+#     'lindseywherrett' : 'https://www.instagram.com/lindseywherrett/'
+#
+# }
+
 
 # function to acquire page content and write it to disk
 def acquire(page):
@@ -96,6 +118,13 @@ def get_description(response, page_title):
             description += response.text[i]
         i+=1
 
+    d = description.split(" ")
+    for x in d:
+        if "\\u" in x:
+            x = ""
+
+    description = " ".join(d)
+    # return description as a string
     return description
 
 # this function is used to creat a uniquely identifying string
