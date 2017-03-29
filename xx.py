@@ -2,43 +2,40 @@
 # Instagram Ascertain & Repost
 # Spring 2017
 
-
 import requests, re, os, time, sys
-
 import db_controller
 from bson.objectid import ObjectId
 
-
 # dictionary of pages to acquire
-post_dictionary = {
-    # 'natanya' : 'https://www.instagram.com/product_of_the_world',
-    'mononoke' : 'https://www.instagram.com/mononoke.io/',
-    'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
-    'world_code' : 'https://www.instagram.com/worldcode/',
-    'republic' : 'https://www.instagram.com/programmerrepublic/',
-    # 'codeness' : 'https://www.instagram.com/thecodeness/',
-    'quotes' : 'https://www.instagram.com/codingquotes/',
-    'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
-    'studiokivi' : 'https://www.instagram.com/studiokivi/',
-    'coder_forevers' : 'https://www.instagram.com/coder_forevers/',
-    'famsh05' : 'https://www.instagram.com/famsh05/',
-    'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
-    'developer_area' : 'https://www.instagram.com/developer_area/',
-    'setupinspiration' : 'https://www.instagram.com/setupinspiration/',
-    'designyourworkspace' : 'https://www.instagram.com/designyourworkspace/',
-    'isetups' : 'https://www.instagram.com/isetups/',
-    'becreatives' : 'https://www.instagram.com/becreatives/',
-    'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
-    'codinblog' : 'https://www.instagram.com/codinblog/',
-    # 'thavy' : 'https://www.instagram.com/thavytillest/',
-    'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
-    'codingcouple' : 'https://www.instagram.com/codingcouple/',
-    'madeawkward' : 'https://www.instagram.com/madeawkward/',
-    'pixelsdigital' : 'https://www.instagram.com/pixelsdigital/',
-    'setuptour_' : 'https://www.instagram.com/setuptour_/'
-}
+# post_dictionary = {
+#     # 'natanya' : 'https://www.instagram.com/product_of_the_world',
+#     'mononoke' : 'https://www.instagram.com/mononoke.io/',
+#     'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
+#     'world_code' : 'https://www.instagram.com/worldcode/',
+#     'republic' : 'https://www.instagram.com/programmerrepublic/',
+#     # 'codeness' : 'https://www.instagram.com/thecodeness/',
+#     'quotes' : 'https://www.instagram.com/codingquotes/',
+#     'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
+#     'studiokivi' : 'https://www.instagram.com/studiokivi/',
+#     'coder_forevers' : 'https://www.instagram.com/coder_forevers/',
+#     'famsh05' : 'https://www.instagram.com/famsh05/',
+#     'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
+#     'developer_area' : 'https://www.instagram.com/developer_area/',
+#     'setupinspiration' : 'https://www.instagram.com/setupinspiration/',
+#     'designyourworkspace' : 'https://www.instagram.com/designyourworkspace/',
+#     'isetups' : 'https://www.instagram.com/isetups/',
+#     'becreatives' : 'https://www.instagram.com/becreatives/',
+#     'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
+#     'codinblog' : 'https://www.instagram.com/codinblog/',
+#     # 'thavy' : 'https://www.instagram.com/thavytillest/',
+#     'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
+#     'codingcouple' : 'https://www.instagram.com/codingcouple/',
+#     'madeawkward' : 'https://www.instagram.com/madeawkward/',
+#     'pixelsdigital' : 'https://www.instagram.com/pixelsdigital/',
+#     'setuptour_' : 'https://www.instagram.com/setuptour_/'
+# }
 
-# ceramics dict
+# # ceramics dict
 # post_dictionary = {
 #     'ceramicsaretrending' : 'https://www.instagram.com/ceramicsaretrending/',
 #     'floriangadsby' : 'https://www.instagram.com/floriangadsby/',
@@ -87,7 +84,6 @@ def acquire(page):
     # create a unique sub directory to contain the post
     path_created = make_post_path(post_path, page_title, uid_string, translated_post_path)
 
-
     # XXX test print XXX
     # print(response.text)
 
@@ -98,7 +94,6 @@ def acquire(page):
     else :
         # path already created, no need to make again
         pass
-
 
 # function that's used to extract page title, useful for naming files written to disk
 def get_page_title(page):
@@ -118,6 +113,7 @@ def get_description(response, page_title):
             description += response.text[i]
         i+=1
 
+    # attempt to remove emoji
     d = description.split(" ")
     for x in d:
         if "\\u" in x:
@@ -204,7 +200,6 @@ def write_post(response, page_title, post_path, description, uid_string):
     post_text = '{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}'
     post_file.write(post_text)
 
-
     db_entry = {
         "username" : page_title,
         "image_path" : image_path,
@@ -246,7 +241,7 @@ def acquire_all(post_dictionary):
         print(post)
 
 # call to acquire all
-acquire_all(post_dictionary)
+# acquire_all(post_dictionary)
 
 # TODO :
 # bridge to repost function

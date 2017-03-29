@@ -1,6 +1,6 @@
 # main method
 import copy
-import x
+import xx
 # from Instagram-API-python/InstagramAPI import InstagramAPI
 import pymongo
 import queue
@@ -11,10 +11,19 @@ from bson.objectid import ObjectId
 import pprint
 sys.path.append('Instagram-API-python')
 from InstagramAPI import InstagramAPI
+import dictionaries
 
 
 # main routine for instagram ascertain & repost
 def main():
+
+    # choose post dictionary
+    post_dictionary = dictionaries.choose_dictionary()
+
+    # acquire all new content from dictionary, fill queue for posting
+    xx.acquire_all(post_dictionary)
+
+
     # login to session throigh instagram api
     print('input username')
     IGUSER = input()
@@ -22,7 +31,7 @@ def main():
 
     print('input password')
     PASSWD = input()
-    
+
 
     # call to api
     igapi = InstagramAPI(IGUSER,PASSWD)
@@ -100,4 +109,5 @@ def fill_queue(q):
     # pprint.pprint(posts.find_one({"_id":pidd}))
 
     return q
-main()
+if __name__=="__main__":
+    main()
