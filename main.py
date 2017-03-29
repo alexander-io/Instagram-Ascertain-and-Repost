@@ -12,7 +12,7 @@ import pprint
 sys.path.append('Instagram-API-python')
 from InstagramAPI import InstagramAPI
 import dictionaries
-
+import getpass
 
 # main routine for instagram ascertain & repost
 def main():
@@ -30,7 +30,8 @@ def main():
 
 
     print('input password')
-    PASSWD = input()
+    # PASSWD = input()
+    PASSWD = getpass.getpass()
 
 
     # call to api
