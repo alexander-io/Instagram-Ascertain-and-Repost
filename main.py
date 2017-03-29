@@ -82,6 +82,11 @@ def main():
 
         print('posting next, #'+str(i))
         print(p['image_path'])
+
+        # filter hashtags from description
+        descript_list = p['description'].split(' ')
+        for x in descript_list:
+            if x[:1] == '#'
         igapi.uploadPhoto(p['image_path'], "source : @"+p['username']+" - '"+p['description']+"'")
 
         # media_id = igapi.uploadPhoto(p['image_path'], p['username']+" - "+p['description'])
