@@ -18,3 +18,6 @@ MongoDB is a dependency for the back-end of this project.
 
 This project's upload functionality is borrowed in part from :
 [Instagram-API-python](https://github.com/LevPasha/Instagram-API-python)
+
+## Example output :
+![Functioning on Heroku](images/example.png)
