@@ -52,22 +52,26 @@ def get_page_title(page):
 # function that's used to extract the caption, or post description
 def get_description(response, page_title):
     description_start = re.search('caption": "', response.text)
-    i = description_start.end() # iterator used to grab description
-    description = ''
-    while True:
-        if (response.text[i] == '"'):
-            break
-        else:
-            description += response.text[i]
-        i+=1
+    try:
+        i = description_start.end() # iterator used to grab description
+        description = ''
+        while True:
+            if (response.text[i] == '"'):
+                break
+            else:
+                description += response.text[i]
+            i+=1
 
-    # attempt to remove emoji
-    d = description.split(" ")
-    for x in d:
-        if "\\u" in x:
-            x = ""
+        # attempt to remove emoji
+        d = description.split(" ")
+        for x in d:
+            if "\\u" in x:
+                x = ""
 
-    description = " ".join(d)
+        description = " ".join(d)
+    except AttributeError:
+        print('cannot gain the end of regex')
+        return "~"
     # return description as a string
     return description
 
@@ -125,55 +129,59 @@ def write_post(response, page_title, post_path, description, uid_string):
     # start by searching the response for the regular expression
     # that corresponds to the image we're looking for
     post_link_start = re.search('display_src": "', response.text)
-    i = post_link_start.end() # iterator used to build image link
-    post_link = '' # string builder for the image link
-    # loop a bit through the reponse, meanwhile build up the image link
-    while True:
-        if (response.text[i] == '"'):
-            break
-        else:
-            post_link += response.text[i]
-        i+=1
+    try:
+        i = post_link_start.end() # iterator used to build image link
+        post_link = '' # string builder for the image link
+        # loop a bit through the reponse, meanwhile build up the image link
+        while True:
+            if (response.text[i] == '"'):
+                break
+            else:
+                post_link += response.text[i]
+            i+=1
 
-    post_time = str(time.time())
+        post_time = str(time.time())
 
-    f_name = page_title+'_'+post_time
-    image_path  = post_path + '/' + f_name + '.jpg'
-    # download the image, title it uniquely based on the page and time, write file to disk
-    os.system('curl ' + post_link + ' -o ' + image_path)
+        f_name = page_title+'_'+post_time
+        image_path  = post_path + '/' + f_name + '.jpg'
+        # download the image, title it uniquely based on the page and time, write file to disk
+        os.system('curl ' + post_link + ' -o ' + image_path)
 
-    # write json with description to disk
-    post_file = open(post_path + "/" + f_name + ".json", "w")
-    uid_string = translate_post_path(uid_string)
-    post_text = '{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}'
-    post_file.write(post_text)
+        # write json with description to disk
+        post_file = open(post_path + "/" + f_name + ".json", "w")
+        uid_string = translate_post_path(uid_string)
+        post_text = '{\n\t"title" : "' + page_title + '",\n\t"time" : "' + post_time +'",\n\t'+'"id" : "' +uid_string + '",\n\t"description" : "' + description + '"\n}'
+        post_file.write(post_text)
 
-    db_entry = {
-        "username" : page_title,
-        "image_path" : image_path,
-        "description" : description,
-        "scrape_time" : post_time
-    }
+        db_entry = {
+            "username" : page_title,
+            "image_path" : image_path,
+            "description" : description,
+            "scrape_time" : post_time
+        }
 
-    post_id = db_controller.post_to_base(db_entry)
+        post_id = db_controller.post_to_base(db_entry)
 
-    # TODO : get the hashtags associated with the post, write to disk
-    # extract the hashtags from two places, from the post description and from the post comments
-    # print('POST ID : ', post_id)
+        # TODO : get the hashtags associated with the post, write to disk
+        # extract the hashtags from two places, from the post description and from the post comments
+        # print('POST ID : ', post_id)
 
-    post_file.close()
+        post_file.close()
 
-    # open the post_map
-    post_map = open("post_map", "a")
+        # open the post_map
+        post_map = open("post_map", "a")
 
-    print('post map :', post_map)
+        print('post map :', post_map)
 
 
-    # if post_map file is empty :
-    post_map.write(str(post_id)+"\n")
+        # if post_map file is empty :
+        post_map.write(str(post_id)+"\n")
 
-    # close file
-    post_map.close()
+        # close file
+        post_map.close()
+    except AttributeError:
+        print('probably an ig video')
+        pass
 
 
 # acquire all recent posts from the pages contained in post_dictionary
