@@ -20,4 +20,5 @@ This project's upload functionality is borrowed in part from :
 [Instagram-API-python](https://github.com/LevPasha/Instagram-API-python)
 
 ## Example output :
-![Functioning on Heroku](images/example.png)
+![code, computers](images/example.png)
+![clay, ceramics](images/exampl.png)
