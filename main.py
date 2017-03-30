@@ -67,11 +67,9 @@ def main():
         entry = q.get()
         p = posts.find_one({"_id":entry})
 
+
         entry_filter = str(entry)
-        # print('map content : ', map_content)
-        # print('entry filter: ', entry_filter)
-        # entry_filter = entry_filter.replace("ObjectId('", "")
-        # entry_filter = entry_filter.replace("'", "")
+
         # remove the dequeued() entry from the list
         map_content.remove(entry_filter+"\n")
 
@@ -85,9 +83,18 @@ def main():
 
         # filter hashtags from description
         descript_list = p['description'].split(' ')
+        tag_list = []
         for x in descript_list:
-            if x[:1] == '#'
-        igapi.uploadPhoto(p['image_path'], "source : @"+p['username']+" - '"+p['description']+"'")
+            if x[:1] == '#':
+                tag_list.append(x)
+
+        tags = " ∴ ".join(tag_list)
+
+        try:
+            igapi.uploadPhoto(p['image_path'], "Source : @"+p['username']+" ∴ " + tags)
+        except UploadError:
+            print('ig uploading error, probably a video')
+            pass
 
         # media_id = igapi.uploadPhoto(p['image_path'], p['username']+" - "+p['description'])
         # with open("live_posts", "a") as f:
@@ -96,7 +103,7 @@ def main():
 
         # sleep until next post
 
-        time.sleep(40)
+        time.sleep(10)
         i+=1
     # log out of session
     igapi.logout()
