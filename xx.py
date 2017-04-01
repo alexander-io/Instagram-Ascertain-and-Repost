@@ -122,6 +122,8 @@ def translate_post_path(post_path):
     translated_post_path = translated_post_path.replace("_","")
     translated_post_path = translated_post_path.replace("+","")
     translated_post_path = translated_post_path.replace("=","")
+    translated_post_path = translated_post_path.replace("|","")
+
     return translated_post_path
 
 # get the image link from the response, download the image, write it to disk

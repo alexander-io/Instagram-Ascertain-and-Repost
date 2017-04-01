@@ -27,7 +27,8 @@ def choose_dictionary():
             'ar.ceramics' : 'https://www.instagram.com/ar.ceramics/',
             'notary_ceramics' : 'https://www.instagram.com/notary_ceramics/',
             'ceramics274' : 'https://www.instagram.com/ceramics274/',
-            'ceramics.daily' : 'https://www.instagram.com/ceramics.daily/'
+            'ceramics.daily' : 'https://www.instagram.com/ceramics.daily/',
+            'matthewchambers_' : 'https://www.instagram.com/matthewchambers_/',
         }
     elif d == 'cs':
         # dictionary of cs pages to acquire
@@ -54,7 +55,11 @@ def choose_dictionary():
             'codingcouple' : 'https://www.instagram.com/codingcouple/',
             'madeawkward' : 'https://www.instagram.com/madeawkward/',
             'pixelsdigital' : 'https://www.instagram.com/pixelsdigital/',
-            'setuptour_' : 'https://www.instagram.com/setuptour_/'
+            'setuptour_' : 'https://www.instagram.com/setuptour_/',
+            'andreassterneer' : 'https://www.instagram.com/andreassterneer/',
+            'codingsetups' : 'https://www.instagram.com/codingsetups/',
+            'c.oding' : 'https://www.instagram.com/c.oding/'
+
         }
     elif d == 'ups':
         # dictionary of ups pages to acquire
@@ -83,6 +88,9 @@ def choose_dictionary():
             'upslymcrew' : 'https://www.instagram.com/upslymcrew/',
             'oppcafe' : 'https://www.instagram.com/oppcafe/',
             'diversionscafe' : 'https://www.instagram.com/diversionscafe/',
-            'upscellar' : 'https://www.instagram.com/upscellar/'
+            'upscellar' : 'https://www.instagram.com/upscellar/',
+            'art.arthistory.pugetsound' : 'https://www.instagram.com/art.arthistory.pugetsound/',
+            'lilliscafe' : 'https://www.instagram.com/lilliscafe/',
+            'crosscurrents_ups' : 'https://www.instagram.com/crosscurrents_ups/'
         }
     return post_dictionary

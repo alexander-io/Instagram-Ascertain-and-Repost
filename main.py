@@ -87,12 +87,14 @@ def main():
         for x in descript_list:
             if x[:1] == '#':
                 tag_list.append(x)
+            elif x[:1] == '@':
+                tag_list.append(x)
 
         tags = " ∴ ".join(tag_list)
 
         try:
             igapi.uploadPhoto(p['image_path'], "Source : @"+p['username']+" ∴ " + tags)
-        except UploadError:
+        except AttributeError:
             print('ig uploading error, probably a video')
             pass
 
@@ -103,7 +105,7 @@ def main():
 
         # sleep until next post
 
-        time.sleep(10)
+        time.sleep(5)
         i+=1
     # log out of session
     igapi.logout()
