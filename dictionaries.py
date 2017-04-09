@@ -17,7 +17,6 @@ def choose_dictionary():
             'ghostwares' : 'https://www.instagram.com/ghostwares/',
             'kazunori_ohnaka' : 'https://www.instagram.com/kazunori_ohnaka/',
             'luke_eastop_ceramics' : 'https://www.instagram.com/luke.eastop.ceramics/',
-            'miromadethis' : 'https://www.instagram.com/miromadethis/',
             'lunaceramics' : 'https://www.instagram.com/lunaceramics/',
             'love_ceramic' : 'https://www.instagram.com/love_ceramic/',
             'lindseywherrett' : 'https://www.instagram.com/lindseywherrett/',
@@ -29,6 +28,8 @@ def choose_dictionary():
             'ceramics274' : 'https://www.instagram.com/ceramics274/',
             'ceramics.daily' : 'https://www.instagram.com/ceramics.daily/',
             'matthewchambers_' : 'https://www.instagram.com/matthewchambers_/',
+            'tortus' : 'https://www.instagram.com/tortus/',
+            'suepryke' : 'https://www.instagram.com/suepryke/',
         }
     elif d == 'cs':
         # dictionary of cs pages to acquire
@@ -41,7 +42,6 @@ def choose_dictionary():
             'quotes' : 'https://www.instagram.com/codingquotes/',
             'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
             'studiokivi' : 'https://www.instagram.com/studiokivi/',
-            'coder_forevers' : 'https://www.instagram.com/coder_forevers/',
             'famsh05' : 'https://www.instagram.com/famsh05/',
             'what_the_for_loop' : 'https://www.instagram.com/what_the_for_loop/',
             'developer_area' : 'https://www.instagram.com/developer_area/',

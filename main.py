@@ -105,7 +105,7 @@ def main():
 
         # sleep until next post
 
-        time.sleep(5)
+        time.sleep(900)
         i+=1
     # log out of session
     igapi.logout()
