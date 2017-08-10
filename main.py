@@ -14,6 +14,8 @@ from InstagramAPI.InstagramAPI import InstagramAPI
 import dictionaries
 import getpass
 
+time_between_posts = 450
+
 # declare & fill the queue with ObjectId types, corresponding to the values contained in the post_map
 q = queue.Queue()
 post_queue = queue.Queue()
@@ -102,7 +104,7 @@ def main():
             print('ig uploading error, probably a video')
             pass
 
-        time.sleep(900)
+        time.sleep(time_between_posts)
 
         i+=1
 
