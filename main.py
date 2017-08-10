@@ -83,7 +83,7 @@ def main():
         # print(p['description'])
 
         print('posting next, #'+str(i))
-        print(p['image_path'])
+        # print(p['image_path'])
 
         # filter hashtags from description
         descript_list = p['description'].split(' ')
