@@ -1,6 +1,7 @@
 all:
 	mkdir posts/
 	touch post_map
+	. setup.sh
 
 clean:
 	rm -rf posts/*
