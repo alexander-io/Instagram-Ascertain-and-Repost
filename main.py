@@ -10,7 +10,7 @@ import sys
 from bson.objectid import ObjectId
 import pprint
 sys.path.append('Instagram-API-python')
-from InstagramAPI import InstagramAPI
+from InstagramAPI.InstagramAPI import InstagramAPI
 import dictionaries
 import getpass
 
@@ -79,7 +79,7 @@ def main():
                 f.write(x)
 
         print('posting next, #'+str(i))
-        print(p['image_path'])
+        #print(p['image_path'])
 
         # filter hashtags from description
         descript_list = p['description'].split(' ')
