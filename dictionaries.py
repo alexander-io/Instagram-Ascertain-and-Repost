@@ -34,7 +34,7 @@ def choose_dictionary():
     elif d == 'cs':
         # dictionary of cs pages to acquire
         post_dictionary = {
-            'mononoke' : 'https://www.instagram.com/mononoke.io/',
+            'archiecodes' : 'https://www.instagram.com/archiecodes/',
             'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
             'world_code' : 'https://www.instagram.com/worldcode/',
             'republic' : 'https://www.instagram.com/programmerrepublic/',
