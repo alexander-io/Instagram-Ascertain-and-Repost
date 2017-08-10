@@ -6,6 +6,15 @@ This is a script that ascertains Instagram content, makes a record of the conten
 MongoDB is a dependency for the back-end of this project.
 [MongoDB](https://github.com/mongodb/mongo)
 
+```bash
+git clone https://github.com/alexander-io/Instagram-Ascertain-and-Repost.git
+cd Instagram-Ascertain-and-Repost/
+. setup.sh
+```
+
+# linux install
+## $ git clone https://github.com/alexander-io/Instagram-Ascertain-and-Repost.git
+
 # Usage :
 ## drop database records, remove post records
 ### $ make clean
