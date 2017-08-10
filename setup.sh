@@ -1,5 +1,6 @@
 sudo apt install make -y
 sudo apt install python3-pip -y
+sudo apt install python-pip -y
 mkdir posts/
 touch post_map
 git clone https://github.com/LevPasha/Instagram-API-python.git
