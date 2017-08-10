@@ -41,6 +41,8 @@ def main():
     client = pymongo.MongoClient()
     db = client.post_database
     posts = db.posts
+    print('test printing post')
+    pprint.pprint(posts.find_one())
 
     # declare & fill the queue with ObjectId types, corresponding to the values contained in the post_map
     q = queue.Queue()
