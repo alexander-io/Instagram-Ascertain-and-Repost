@@ -99,7 +99,7 @@ def main():
         tags = " ∴ ".join(tag_list)
 
         try:
-            igapi.uploadPhoto(p['image_path'], "Source : @"+p['username']+" ∴ " + tags)
+            igapi.uploadPhoto(p['image_path'], " ∴ " + "Source : @"+p['username']+" ∴ ")
         except AttributeError:
             print('ig uploading error, probably a video')
             pass

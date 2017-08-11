@@ -1,6 +1,6 @@
 # get user input to choose a dictionary to ascertain content from
 def choose_dictionary():
-    print('choose dictionary, enter leading character :\n\tclay\tceramics\n\tcs\tcomputers\n\tups\tuniv. puget sound')
+    print('choose dictionary, enter leading character :\n\nclay\tceramics\ncs\tcomputers\nups\tuniv. puget sound\ncrypt\tcrypto-currency')
     d = input()
     if d == 'clay':
         # ceramics dict
@@ -49,7 +49,6 @@ def choose_dictionary():
             'designyourworkspace' : 'https://www.instagram.com/designyourworkspace/',
             'isetups' : 'https://www.instagram.com/isetups/',
             'becreatives' : 'https://www.instagram.com/becreatives/',
-            'macintosh_setups' : 'https://www.instagram.com/macintosh_setups/',
             'codinblog' : 'https://www.instagram.com/codinblog/',
             'themaxsandelin' : 'https://www.instagram.com/themaxsandelin/',
             'codingcouple' : 'https://www.instagram.com/codingcouple/',
@@ -92,5 +91,13 @@ def choose_dictionary():
             'art.arthistory.pugetsound' : 'https://www.instagram.com/art.arthistory.pugetsound/',
             'lilliscafe' : 'https://www.instagram.com/lilliscafe/',
             'crosscurrents_ups' : 'https://www.instagram.com/crosscurrents_ups/'
+        }
+    elif d == 'crypt':
+        # dictionary of cs pages to acquire
+        post_dictionary = {
+            'ethereum_updates' : 'https://www.instagram.com/ethereum_updates/',
+            'ethereumproject' : 'https://www.instagram.com/ethereumproject/',
+            'officialbitcoin' : 'https://www.instagram.com/officialbitcoin/',
+            'hackersclub' : 'https://www.instagram.com/hackersclub/'
         }
     return post_dictionary
