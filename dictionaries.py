@@ -1,6 +1,6 @@
 # get user input to choose a dictionary to ascertain content from
 def choose_dictionary():
-    print('choose dictionary, enter leading character :\n\nclay\tceramics\ncs\tcomputers\nups\tuniv. puget sound\ncrypt\tcrypto-currency')
+    print('choose dictionary, enter leading character :\n\nclay\tceramics\ncs\tcomputers\nups\tuniv. puget sound\ncrypt\tcrypto-currency\nrb\trussian blue cats\n\n')
     d = input()
     if d == 'clay':
         # ceramics dict
@@ -99,5 +99,34 @@ def choose_dictionary():
             'ethereumproject' : 'https://www.instagram.com/ethereumproject/',
             'officialbitcoin' : 'https://www.instagram.com/officialbitcoin/',
             'hackersclub' : 'https://www.instagram.com/hackersclub/'
+        }
+    elif d == 'rb' or d == 'russian' or d == 'russianblue':
+        # dictionary of cs pages to acquire
+        post_dictionary = {
+            'russianblueofficial' : 'https://www.instagram.com/russianblueofficial/',
+            'sereshka_russian_blues' : 'https://www.instagram.com/sereshka_russian_blues/',
+            'teruchan0823' : 'https://www.instagram.com/teruchan0823/',
+            'russianbluecute_insta' : 'https://www.instagram.com/russianbluecute_insta/',
+            'babette_and_the_pug' : 'https://www.instagram.com/babette_and_the_pug/',
+            '_russianblue_cats' : 'https://www.instagram.com/_russianblue_cats/',
+            'russianbluemoments' : 'https://www.instagram.com/russianbluemoments/',
+            'russian_bluecats' : 'https://www.instagram.com/russian_bluecats/',
+            'russianbluenyc' : 'https://www.instagram.com/russianbluenyc/',
+            'arkeangelns_russianblue' : 'https://www.instagram.com/arkeangelns_russianblue/',
+            'russian_blue_cats' : 'https://www.instagram.com/russian_blue_cats/',
+            'xafiandauri' : 'https://www.instagram.com/xafiandauri/',
+            'cins.kedi.sahiplendirme' : 'https://www.instagram.com/cins.kedi.sahiplendirme/'
+            'russianblue_cats' : 'https://www.instagram.com/russianblue_cats/',
+            'silvertown_cats' : 'https://www.instagram.com/silvertown_cats/',
+            'russianbluehannibal' : 'https://www.instagram.com/russianbluehannibal/',
+            'russianblue_lucky' : 'https://www.instagram.com/russianblue_lucky/',
+            'boogieshmooshie' : 'https://www.instagram.com/boogieshmooshie/',
+            'pekoe.blue' : 'https://www.instagram.com/pekoe.blue/',
+            'the_russianblue_trio' : 'https://www.instagram.com/the_russianblue_trio/',
+            'russianblue_travis' : 'https://www.instagram.com/russianblue_travis/',
+            'russianbluecats' : 'https://www.instagram.com/russianbluecats/',
+            'sereshka.sisi.russian_blue' : 'https://www.instagram.com/sereshka.sisi.russian_blue/',
+            'sushi_russian_blue' : 'https://www.instagram.com/sushi_russian_blue/',
+            'lukatherussianblue' : 'https://www.instagram.com/lukatherussianblue/'
         }
     return post_dictionary
