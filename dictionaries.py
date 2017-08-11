@@ -115,7 +115,7 @@ def choose_dictionary():
             'arkeangelns_russianblue' : 'https://www.instagram.com/arkeangelns_russianblue/',
             'russian_blue_cats' : 'https://www.instagram.com/russian_blue_cats/',
             'xafiandauri' : 'https://www.instagram.com/xafiandauri/',
-            'cins.kedi.sahiplendirme' : 'https://www.instagram.com/cins.kedi.sahiplendirme/'
+            'cins.kedi.sahiplendirme' : 'https://www.instagram.com/cins.kedi.sahiplendirme/',
             'russianblue_cats' : 'https://www.instagram.com/russianblue_cats/',
             'silvertown_cats' : 'https://www.instagram.com/silvertown_cats/',
             'russianbluehannibal' : 'https://www.instagram.com/russianbluehannibal/',
