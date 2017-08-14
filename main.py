@@ -14,7 +14,7 @@ from InstagramAPI.InstagramAPI import InstagramAPI
 import dictionaries
 import getpass
 
-time_between_posts = 450
+time_between_posts = 15
 
 # declare & fill the queue with ObjectId types, corresponding to the values contained in the post_map
 q = queue.Queue()
