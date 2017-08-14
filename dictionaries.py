@@ -1,6 +1,6 @@
 # get user input to choose a dictionary to ascertain content from
 def choose_dictionary():
-    print('choose dictionary, enter leading character :\n\nclay\tceramics\ncs\tcomputers\nups\tuniv. puget sound\ncrypt\tcrypto-currency\nrb\trussian blue cats\n\n')
+    print('choose dictionary, enter leading character :\n\nclay\tceramics\ncs\tcomputers\nups\tuniv. puget sound\ncrypt\tcrypto-currency\nrb\trussian blue cats\npug\tpug\n\n... ')
     d = input()
     if d == 'clay':
         # ceramics dict
@@ -38,7 +38,6 @@ def choose_dictionary():
             'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
             'world_code' : 'https://www.instagram.com/worldcode/',
             'republic' : 'https://www.instagram.com/programmerrepublic/',
-            'codeness' : 'https://www.instagram.com/thecodeness/',
             'quotes' : 'https://www.instagram.com/codingquotes/',
             'buildtheweb' : 'https://www.instagram.com/buildtheweb/',
             'studiokivi' : 'https://www.instagram.com/studiokivi/',
@@ -128,5 +127,43 @@ def choose_dictionary():
             'sereshka.sisi.russian_blue' : 'https://www.instagram.com/sereshka.sisi.russian_blue/',
             'sushi_russian_blue' : 'https://www.instagram.com/sushi_russian_blue/',
             'lukatherussianblue' : 'https://www.instagram.com/lukatherussianblue/'
+        }
+    elif d == 'pug':
+        # dictionary of cs pages to acquire
+        post_dictionary = {
+            'itsdougthepug' : 'https://www.instagram.com/itsdougthepug/?hl=en',
+            'pug.space' : 'https://www.instagram.com/pug.space/',
+            'pug.fans' : 'https://www.instagram.com/pug.fans/',
+            'pug_a_frenchie_and_brian' : 'https://www.instagram.com/pug_a_frenchie_and_brian/',
+            'ronniewoodpug' : 'https://www.instagram.com/ronniewoodpug/',
+            'circus_pugs' : 'https://www.instagram.com/circus_pugs/',
+            'peeweesbigpugventure' : 'https://www.instagram.com/peeweesbigpugventure/',
+            'mokatheadorablepug' : 'https://www.instagram.com/mokatheadorablepug/',
+            'meetluluthepug' : 'https://www.instagram.com/meetluluthepug/',
+            'pugs_lovers_world' : 'https://www.instagram.com/pugs_lovers_world/',
+            'chickenthepug' : 'https://www.instagram.com/chickenthepug/',
+            'itsmoosethepug' : 'https://www.instagram.com/itsmoosethepug/',
+            'pugbeans' : 'https://www.instagram.com/pugbeans/',
+            'thepuglifeofbentley' : 'https://www.instagram.com/thepuglifeofbentley/',
+            'pugalier.sisters.and.pearl' : 'https://www.instagram.com/pugalier.sisters.and.pearl/',
+            'pugonwheels' : 'https://www.instagram.com/pugonwheels/',
+            'pugsngiggles' : 'https://www.instagram.com/pugsngiggles/',
+            'pugloulou' : 'https://www.instagram.com/pugloulou/',
+            'pugbasement' : 'https://www.instagram.com/pugbasement/',
+            'pugareawesome' : 'https://www.instagram.com/pugareawesome/',
+            '' : 'https://www.instagram.com/pug.dogz/',
+            '' : 'https://www.instagram.com/pugsofinstagram/',
+            '' : 'https://www.instagram.com/pugdashians/',
+            '' : 'https://www.instagram.com/the.pugs.of.insta/',
+            '' : 'https://www.instagram.com/_maggiethepug/',
+            '' : 'https://www.instagram.com/edgar_allanpug/',
+            '' : 'https://www.instagram.com/worldofcutepugs/',
+            '' : 'https://www.instagram.com/pug_ru/',
+            '' : 'https://www.instagram.com/pugloversclub/',
+            '' : 'https://www.instagram.com/worldofpug/',
+            '' : 'https://www.instagram.com/pugvision_/',
+            '' : 'https://www.instagram.com/pugscenter/',
+            '' : 'https://www.instagram.com/pugs/',
+            '' : 'https://www.instagram.com/pug_a_frenchie_and_brian/?hl=en'
         }
     return post_dictionary
