@@ -102,6 +102,7 @@ def choose_dictionary():
     elif d == 'rb' or d == 'russian' or d == 'russianblue':
         # dictionary of cs pages to acquire
         post_dictionary = {
+            'claudiuscolmus' : 'https://www.instagram.com/claudiuscolmus'
             'russianblueofficial' : 'https://www.instagram.com/russianblueofficial/',
             'sereshka_russian_blues' : 'https://www.instagram.com/sereshka_russian_blues/',
             'teruchan0823' : 'https://www.instagram.com/teruchan0823/',
