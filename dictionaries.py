@@ -56,7 +56,8 @@ def choose_dictionary():
             'setuptour_' : 'https://www.instagram.com/setuptour_/',
             'andreassterneer' : 'https://www.instagram.com/andreassterneer/',
             'codingsetups' : 'https://www.instagram.com/codingsetups/',
-            'c.oding' : 'https://www.instagram.com/c.oding/'
+            'c.oding' : 'https://www.instagram.com/c.oding/',
+            'ed.techsource' : 'https://www.instagram.com/ed.techsource/'
 
         }
     elif d == 'ups':
