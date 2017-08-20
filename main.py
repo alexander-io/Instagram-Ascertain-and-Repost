@@ -26,7 +26,7 @@ def main():
     post_dictionary = dictionaries.choose_dictionary()
 
     # acquire all new content from dictionary, fill queue for posting
-    xx.acquire_all(post_dictionary)
+    xx.acquire_all(post_dictionary['dict'])
 
 
     # login to session throigh instagram api
