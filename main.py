@@ -82,24 +82,19 @@ def main():
                 f.write(x) # XXX
 
         p = post_queue.get()
-        # print(p['description'])
 
         print('posting next, #'+str(i))
-        # print(p['image_path'])
 
-        # filter hashtags from description
-        descript_list = p['description'].split(' ')
-        tag_list = []
-        for x in descript_list:
-            if x[:1] == '#':
-                tag_list.append(x)
-            elif x[:1] == '@':
-                tag_list.append(x)
+        tag_lst_builder = []
+        i = 0
+        while i < len(post_dictionary['tags']) :
+            tag_lst_builder.append('#'+post_dictionary['tags'][i])
+            i += 1
 
-        tags = " ∴ ".join(tag_list)
+        tags = ' '.join(tag_lst_builder)
 
         try:
-            igapi.uploadPhoto(p['image_path'], " ∴ " + "Source : @"+p['username']+" ∴ ")
+            igapi.uploadPhoto(p['image_path'], " ∴ " + "Source : @"+p['username']+" ∴ " + tags)
         except AttributeError:
             print('ig uploading error, probably a video')
             pass
@@ -110,57 +105,6 @@ def main():
 
     igapi.logout()
 
-    # igapi.login() # login
-    # i=0
-    # igapi.login() # login
-    # while not q.empty():
-    #
-    #     # pprint.pprint(posts.find_one({"_id":q.get()}))
-    #     entry = q.get()
-    #     p = posts.find_one({"_id":entry})
-    #     print(p)
-    #
-    #     entry_filter = str(entry)
-    #
-    #     # remove the dequeued() entry from the list
-    #     map_content.remove(entry_filter+"\n")
-    #
-    #     # open the post_map file, and write back the remaining entries
-    #     with open("post_map", "w") as f:
-    #         for x in map_content:
-    #             f.write(x)
-    #
-    #     print('posting next, #'+str(i))
-        #print(p['image_path'])
-
-        # filter hashtags from description
-        # descript_list = p['description'].split(' ')
-        # tag_list = []
-        # for x in descript_list:
-        #     if x[:1] == '#':
-        #         tag_list.append(x)
-        #     elif x[:1] == '@':
-        #         tag_list.append(x)
-        #
-        # tags = " ∴ ".join(tag_list)
-        #
-        # try:
-        #     igapi.uploadPhoto(p['image_path'], "Source : @"+p['username']+" ∴ " + tags)
-        # except AttributeError:
-        #     print('ig uploading error, probably a video')
-        #     pass
-
-        # media_id = igapi.uploadPhoto(p['image_path'], p['username']+" - "+p['description'])
-        # with open("live_posts", "a") as f:
-        #     f.write(media_id+"\n")
-
-
-        # sleep until next post
-
-        # time.sleep(900)
-        # i+=1
-    # log out of session
-    # igapi.logout()
 
 def fill_queue():
     with open("post_map", "r") as f:
