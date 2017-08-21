@@ -220,7 +220,18 @@ def choose_dictionary():
                 'sereshka.sisi.russian_blue' : 'https://www.instagram.com/sereshka.sisi.russian_blue/',
                 'sushi_russian_blue' : 'https://www.instagram.com/sushi_russian_blue/',
                 'lukatherussianblue' : 'https://www.instagram.com/lukatherussianblue/',
-                'kot.fluffy' : 'https://www.instagram.com/kot.fluffy/'
+                'kot.fluffy' : 'https://www.instagram.com/kot.fluffy/',
+		't2tom7' : 'https://www.instagram.com/kot.fluffy/',
+		'yokeee' : 'https://www.instagram.com/yokeee/',
+		'marinblue0718' : 'https://www.instagram.com/marinblue0718/',
+		'two_boy_cats' : 'https://www.instagram.com/two_boy_cats/',
+		'buckminstercat' : 'https://www.instagram.com/buckminstercat/',
+		'britishsweethearts_benji_leyla' : 'https://www.instagram.com/britishsweethearts_benji_leyla/',
+		'torsten_the_cat' : 'https://instagram.com/torsten_the_cat/',
+		'takuya_71' : 'https://instagram.com/takuya_71/',
+		'millay_the_russian_blue' : 'https://www.instagram.com/millay_the_russian_blue/',
+		'walter.and.winston' : 'https://www.instagram.com/walter.and.winston/',
+		'lukathegreycat' : 'https://www.instagram.com/lukathegreycat/'
             }
         }
     elif d == 'pug':
