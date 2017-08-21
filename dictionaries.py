@@ -275,6 +275,9 @@ def choose_dictionary():
                 #'pugsrock'
             ],
             'dict' : {
+
+                'veronique9368' : 'https://www.instagram.com/veronique9368/',
+                'maximus.the.pug' : 'https://www.instagram.com/itsdougthepug/',
                 'itsdougthepug' : 'https://www.instagram.com/itsdougthepug/?hl=en',
                 'pug.space' : 'https://www.instagram.com/pug.space/',
                 'pug.fans' : 'https://www.instagram.com/pug.fans/',
