@@ -69,6 +69,7 @@ def choose_dictionary():
                 'bitcoin'
                 ],
             'dict' : {
+                'estefanniegg' : 'https://www.instagram.com/estefanniegg/',
                 'archiecodes' : 'https://www.instagram.com/archiecodes/',
                 'world_programmers' : 'https://www.instagram.com/worldofprogrammers/',
                 'world_code' : 'https://www.instagram.com/worldcode/',
@@ -275,7 +276,9 @@ def choose_dictionary():
                 #'pugsrock'
             ],
             'dict' : {
-
+                'pugsniggles' : 'https://www.instagram.com/pugsniggles/',
+                'puglifemagazine' : 'https://www.instagram.com/puglifemagazine/',
+                'sassybella_puglife' : 'https://www.instagram.com/sassybella_puglife/',
                 'veronique9368' : 'https://www.instagram.com/veronique9368/',
                 'maximus.the.pug' : 'https://www.instagram.com/itsdougthepug/',
                 'itsdougthepug' : 'https://www.instagram.com/itsdougthepug/?hl=en',
